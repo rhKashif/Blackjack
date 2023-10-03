@@ -8,8 +8,9 @@ WIN_MESSAGE = "You win!"
 DRAW_MESSAGE = "Draw!"
 MAX_SCORE = 21
 
+
 def shuffle(deck: list[str], seed: int) -> list[str]:
-    """Randomises a deck of cards"""
+    """Randomizes a deck of cards"""
 
     copy_of_deck = deck.copy()
     Random(seed).shuffle(copy_of_deck)
@@ -41,7 +42,7 @@ def points_for(cards: list[str]) -> int:
     if len(cards) == 2:
         if cards[0][0] == 'A' and cards[1][0] == 'A' or len(cards) >= 6:
             return MAX_SCORE
-        
+
     for card in cards:
         if card[0] in card_value:
             points += card_value.get(card[0])
@@ -67,7 +68,7 @@ def player_turn(deck: list[str], hand: list[str]) -> bool:
         print('Hitting')
         print(f'You drew {new_card}')
         return True
-    
+
     if action == "stick":
         return False
 
@@ -85,8 +86,9 @@ def dealer_turn(deck: list[str], hand: list[str]) -> bool:
         print('Hitting')
         print(f'Dealer drew {new_card}')
         return True
-    
+
     return False
+
 
 def game_outcome(player_hand: list[str], dealer_hand: list[str]) -> None:
     if points_for(dealer_hand) > MAX_SCORE:
@@ -103,7 +105,7 @@ def game_outcome(player_hand: list[str], dealer_hand: list[str]) -> None:
     elif points_for(player_hand) < points_for(dealer_hand):
         print('You scored lower than the dealer!')
         print(LOSE_MESSAGE)
-    
+
 
 def play(seed: int) -> None:
     """
@@ -143,7 +145,7 @@ def play(seed: int) -> None:
         is_dealer_turn = dealer_turn(shuffled_deck, dealer_hand)
 
     game_outcome(player_hand, dealer_hand)
-    
+
 
 def get_seed() -> int:
     """
@@ -172,15 +174,13 @@ def get_seed() -> int:
 
 card = 'A'
 
+
 def points(card) -> int:
     """Gets the correct number of points for a card"""
 
     card_value = {'A': 11, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
-                '7': 7, '8': 8, '9': 9, '1': 10, 'J': 10, 'Q': 10, 'K': 10}
+                  '7': 7, '8': 8, '9': 9, '1': 10, 'J': 10, 'Q': 10, 'K': 10}
 
     for rank in card_value.keys():
-        if  card == rank:
+        if card == rank:
             return card_value[rank]
-
-
-         
