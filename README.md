@@ -6,3 +6,6 @@ A simple game of blackjack coded for 1 player against a coded dealer played in t
 
 ##### Example game - Player Win
 ![Walkthrough - Player Win](player_win_game.png)
+
+## Setup
+There is no set up required to run this script; no libraries or dependencies to be installed.
