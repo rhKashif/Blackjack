@@ -9,6 +9,27 @@ DRAW_MESSAGE = "Draw!"
 MAX_SCORE = 21
 
 
+def get_seed() -> int:
+    """
+    You can safely ignore this function. It is used to accept a seed from the command line.
+    For example
+
+    python3 blackjack.py --seed 313131
+
+    Would play the game with defined seed of 313131
+    """
+    parser = argparse.ArgumentParser("blackjack")
+    parser.add_argument(
+        "--seed", dest='seed', help="The seed that a game will be played with", type=int)
+    args = parser.parse_args()
+    seed = args.seed
+
+    if seed is None:
+        return time()
+
+    return seed
+
+
 def shuffle(deck: list[str], seed: int) -> list[str]:
     """Randomizes a deck of cards"""
 
@@ -121,8 +142,7 @@ def play(seed: int) -> None:
 
     is_player_turn = True
 
-    print('Welcome to a game of Blackjack 21 \nShuffling deck.. \nDealing cards...\n')
-    print('Player turn begins...')
+    print('Welcome to a game of Blackjack 21 \nShuffling deck.. \nDealing cards..\nPlayer turn begins...')
 
     while is_player_turn:
         is_player_turn = player_turn(shuffled_deck, player_hand)
@@ -147,40 +167,17 @@ def play(seed: int) -> None:
     game_outcome(player_hand, dealer_hand)
 
 
-def get_seed() -> int:
-    """
-    You can safely ignore this function. It is used to accept a seed from the command line.
-    For example
-
-    python3 blackjack.py --seed 313131
-
-    Would play the game with defined seed of 313131
-    """
-    parser = argparse.ArgumentParser("blackjack")
-    parser.add_argument(
-        "--seed", dest='seed', help="The seed that a game will be played with", type=int)
-    args = parser.parse_args()
-    seed = args.seed
-
-    if seed is None:
-        return time()
-
-    return seed
+if __name__ == "__main__":
+    game_seed = get_seed()
+    play(game_seed)
 
 
-# if __name__ == "__main__":
-#     game_seed = get_seed()
-#     play(game_seed)
+# def points(card) -> int:
+#     """Gets the correct number of points for a card"""
 
-card = 'A'
+#     card_value = {'A': 11, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
+#                   '7': 7, '8': 8, '9': 9, '1': 10, 'J': 10, 'Q': 10, 'K': 10}
 
-
-def points(card) -> int:
-    """Gets the correct number of points for a card"""
-
-    card_value = {'A': 11, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6,
-                  '7': 7, '8': 8, '9': 9, '1': 10, 'J': 10, 'Q': 10, 'K': 10}
-
-    for rank in card_value.keys():
-        if card == rank:
-            return card_value[rank]
+#     for rank in card_value.keys():
+#         if card == rank:
+#             return card_value[rank]
