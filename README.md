@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this challenge, we've built a simple one-player Blackjack game that can be played in the command line. By the time we're done, you'll be able to:
+In this project, I've built a simple one-player Blackjack game that can be played in the command line with the following functionality:
 
 - Generate a deck of cards
 - Randomize a deck of cards
@@ -61,7 +61,7 @@ python blackjack.py --seed 313131
 
 ## Testing
 
-We have a comprehensive test suite to ensure the functionality and reliability of the one-player Blackjack game. We use [pytest](https://pytest.org/) as our testing framework.
+I have a comprehensive test suite to ensure the functionality and reliability of the one-player Blackjack game. I have used [pytest](https://pytest.org/) as my testing framework.
 
 To run the tests locally, follow these steps:
 
@@ -77,5 +77,5 @@ pytest test_blackjack_trainees.py
 
 ## Contributing
 
-We welcome contributions to this project. Feel free to open issues, suggest improvements, or submit pull requests. Please follow best practices and contribute in a constructive manner.
+I welcome contributions to this project. Feel free to open issues, suggest improvements, or submit pull requests. Please follow best practices and contribute in a constructive manner.
 
